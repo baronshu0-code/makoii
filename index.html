@@ -86,11 +86,14 @@ footer{
 <body>
 
 <audio autoplay loop>
-  <source src="musik.mp3" type="audio/mpeg">
+  <source src="melody.mp3" type="audio/mpeg">
 </audio>
 
 <!-- SECTION 1 -->
 <section>
+  
+  <button class="btn" onclick="playMusic()">Putar Musik 🎵</button>
+
 <h1>Untuk Ibu Tercinta 🤍</h1>
 <p>Hari spesial akan segera tiba…  
 Hari lahir perempuan terhebat dalam hidupku.</p>
@@ -187,7 +190,12 @@ for(let i=0;i<15;i++){
   f.style.animationDuration=5+Math.random()*5+"s";
   document.body.appendChild(f);
 }
+  function playMusic(){
+  document.getElementById("bgm").play();
+}
+
 </script>
 
 </body>
 </html>
+
