@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selamat Ulang Tahun Ibu 🤍</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Poppins,sans-serif;
+  background:linear-gradient(#fffaf6,#fdeee6);
+  color:#5a3e36;
+}
+section{
+  min-height:100vh;
+  padding:40px 18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+h1,h2{font-family:'Playfair Display',serif}
+h1{font-size:2.2rem}
+h2{font-size:1.8rem;margin-bottom:15px}
+p{font-size:1rem;line-height:1.8;max-width:650px}
+.btn{
+  margin-top:25px;
+  padding:12px 28px;
+  border:none;
+  border-radius:25px;
+  background:#d17a5b;
+  color:white;
+  font-size:1rem;
+}
+.btn:active{transform:scale(0.96)}
+.countdown{
+  display:flex;
+  gap:10px;
+  margin-top:20px;
+}
+.box{
+  background:white;
+  padding:10px;
+  border-radius:12px;
+  min-width:70px;
+  box-shadow:0 4px 10px rgba(0,0,0,.1)
+}
+.box h3{font-size:1.4rem}
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  max-width:350px;
+}
+.gallery img{
+  width:100%;
+  border-radius:12px;
+}
+video{
+  width:100%;
+  max-width:360px;
+  border-radius:15px;
+  box-shadow:0 8px 20px rgba(0,0,0,.2)
+}
+footer{
+  padding:25px;
+  font-size:.85rem;
+  opacity:.7;
+}
+.flower{
+  position:fixed;
+  top:-10%;
+  animation:fall linear infinite;
+  opacity:.6;
+}
+@keyframes fall{
+  to{transform:translateY(120vh)}
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+  <source src="musik.mp3" type="audio/mpeg">
+</audio>
+
+<!-- SECTION 1 -->
+<section>
+<h1>Untuk Ibu Tercinta 🤍</h1>
+<p>Hari spesial akan segera tiba…  
+Hari lahir perempuan terhebat dalam hidupku.</p>
+
+<div class="countdown">
+  <div class="box"><h3 id="d">0</h3><small>Hari</small></div>
+  <div class="box"><h3 id="h">0</h3><small>Jam</small></div>
+  <div class="box"><h3 id="m">0</h3><small>Menit</small></div>
+  <div class="box"><h3 id="s">0</h3><small>Detik</small></div>
+</div>
+
+<button class="btn" onclick="go(1)">Buka Pesan 🤍</button>
+</section>
+
+<!-- SECTION 2 -->
+<section>
+<h2>Surat dari Anakmu</h2>
+<p>
+Bu… terima kasih atas cinta tanpa syarat,
+doa yang tak pernah putus,
+dan kesabaran yang tidak terhitung.
+</p>
+<p>
+Semoga Allah selalu menjaga ibu,
+memberi kesehatan, umur panjang,
+dan kebahagiaan dunia akhirat.
+</p>
+<button class="btn" onclick="go(2)">Putar Video 🎥</button>
+</section>
+
+<!-- SECTION 3 VIDEO -->
+<section>
+<h2>Video Ucapan</h2>
+<p>Ini pesan kecil dariku, Bu 🤍</p>
+<video controls>
+  <source src="mak5.mp4" type="video/mp4">
+</video>
+<button class="btn" onclick="go(3)">Kenangan Kita 🌸</button>
+</section>
+
+<!-- SECTION 4 -->
+<section>
+<h2>Kenangan Bersama Ibu</h2>
+<div class="gallery">
+  <img src="mak.jpg">
+  <img src="mak1.jpeg">
+  <img src="mak2.jpeg">
+  <img src="mak3.jpeg">
+</div>
+<button class="btn" onclick="go(4)">Doa Untuk Ibu 🤲</button>
+</section>
+
+<!-- SECTION 5 -->
+<section>
+<h2>Doa di Hari Ulang Tahun</h2>
+<p>
+Ya Allah, muliakanlah ibuku,
+ampuni dosanya,
+dan jadikan aku anak yang berbakti.
+</p>
+<h2>🤍 Aku Sayang Ibu 🤍</h2>
+</section>
+
+<footer>
+Dibuat dengan cinta oleh anakmu 🌷
+</footer>
+
+<script>
+function go(i){
+  document.querySelectorAll("section")[i].scrollIntoView({behavior:"smooth"})
+}
+
+// 🔴 GANTI TANGGAL ULTAH IBU DI SINI
+const ultah = new Date("1970-12-17T00:00:00").getTime();
+
+setInterval(()=>{
+  const now = new Date().getTime();
+  const sisa = ultah - now;
+  if(sisa > 0){
+    document.getElementById("d").innerText = Math.floor(sisa/(1000*60*60*24));
+    document.getElementById("h").innerText = Math.floor((sisa%(1000*60*60*24))/(1000*60*60));
+    document.getElementById("m").innerText = Math.floor((sisa%(1000*60*60))/(1000*60));
+    document.getElementById("s").innerText = Math.floor((sisa%(1000*60))/1000);
+  }
+},1000);
+
+// bunga jatuh
+for(let i=0;i<15;i++){
+  let f=document.createElement("div");
+  f.className="flower";
+  f.innerHTML="🌸";
+  f.style.left=Math.random()*100+"vw";
+  f.style.fontSize=16+Math.random()*10+"px";
+  f.style.animationDuration=5+Math.random()*5+"s";
+  document.body.appendChild(f);
+}
+</script>
+
+</body>
+</html>
